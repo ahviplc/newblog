@@ -27,10 +27,18 @@ repositories {
 
 
 dependencies {
+    //compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    runtime('mysql:mysql-connector-java')
+    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    //compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+
+    //compile group: 'net.java.dev.jna', name: 'jna', version: '4.5.1'
+    //compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '3.0.2.RELEASE'
+
+
+    //runtime('mysql:mysql-connector-java')
     runtime('org.springframework.boot:spring-boot-devtools')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    //testCompile('org.springframework.security:spring-security-test')
 }
