@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.util.StringUtils;
 
 /**
  * 用户主页空间控制器
@@ -19,8 +20,9 @@ public class UserspaceController {
     @GetMapping(value = {"/{username}"})
     public String userSpace(@PathVariable("username") String username) {
         System.out.println("username:" + username);
-        return "u";
+        return "/userspace/u";
     }
+
 
     @GetMapping(value = {"/{username}/blogs"})
     public String listBlogsByOrder(@PathVariable("username") String username,
@@ -28,13 +30,13 @@ public class UserspaceController {
                                    @RequestParam(value = "category", required = false) Long category,
                                    @RequestParam(value = "keyword", required = false) String keyword) {
         if (category != null) {
-
+            // 分类不为空
             System.out.print("category:" + category );
             System.out.print("selflink:" + "redirect:/u/" + username + "/blogs?category=" + category);
             return "/userspace/u";
 
-        } else if (keyword != null && keyword.isEmpty() == false) {
-
+        } else if (!StringUtils.isEmptyOrWhitespace(keyword)) {
+            // keyword不为空或空格
             System.out.print("keyword:" + keyword );
             System.out.print("selflink:" + "redirect:/u/" + username + "/blogs?keyword=" + keyword);
             return "/userspace/u";
@@ -45,8 +47,13 @@ public class UserspaceController {
         return "/userspace/u";
     }
 
+    /**
+     * 查找某个id的博客
+     * @param id
+     * @return
+     */
     @GetMapping(value = {"/{username}/blogs/{id}"})
-    public String listBlogsByOrder(@PathVariable("id") Long id) {
+    public String getBlog(@PathVariable("id") Long id) {
         System.out.println("blogId:" + id);
         return "/userspace/blog";
     }

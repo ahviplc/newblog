@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = {"/blogs"})
 public class BlogController {
 
+    /**
+     * 获取博客列表，默认根据new进行排序
+     * @param order 排序规则
+     * @param tag 标签/keyword
+     * @return
+     */
     public String listBlogs(@RequestParam(value = "order", required = false, defaultValue = "new") String order,
                             @RequestParam(value = "tag", required = false) Long tag) {
 

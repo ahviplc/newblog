@@ -16,8 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = {"/admins"})
 public class AdminController {
 
+    /**
+     * 获取博客后台首页
+     * @param model
+     * @return
+     */
     @GetMapping
-    public ModelAndView listUsers(Model model) {
+    public ModelAndView index(Model model) {
         return new ModelAndView("admins/index", "menuList", model);
     }
 }
